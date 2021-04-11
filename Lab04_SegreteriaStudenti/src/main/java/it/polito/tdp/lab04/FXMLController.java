@@ -10,6 +10,7 @@ import it.polito.tdp.lab04.model.Model;
 import it.polito.tdp.lab04.model.Studente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -39,6 +40,9 @@ public class FXMLController {
 
     @FXML
     private TextArea Result;
+    
+    @FXML
+    private Button btnIscrivi;
 
     @FXML
     void HandleCombo(ActionEvent event) {
@@ -51,7 +55,7 @@ public class FXMLController {
     @FXML
     void doCerca(ActionEvent event) {
     	String stringaMatricola = this.matricola.getText();
-    	int matricolaStudente=1;
+    	int matricolaStudente;
     	try {
     		matricolaStudente = Integer.parseInt(stringaMatricola);
     	}
@@ -75,6 +79,36 @@ public class FXMLController {
     	else
     		this.Result.setText("Lo studente non è iscritto al corso!");
     	
+    	
+    }
+    
+    @FXML
+    void handleIscrivi(ActionEvent event) {
+    	
+    	String stringaMatricola = this.matricola.getText();
+    	int matricolaStudente;
+    	try {
+    		matricolaStudente = Integer.parseInt(stringaMatricola);
+    	}
+    	catch(NumberFormatException nfe) {
+    		this.Result.setText("ERRORE! Inserire una matricola valida");
+    		return;
+    	}
+    	
+    	if(codiceCorso==null) {
+    		this.Result.setText("Devi selezionare un corso!");
+    		return;
+    	}
+    	
+    	if(codiceCorso=="") {
+    		this.Result.setText("Devi selezionare un solo corso!");
+    		return;
+    	}
+    	
+    	if(model.inscriviStudenteACorso(matricolaStudente, codiceCorso)==true)
+    		this.Result.setText("Studente inserito correttamente!");
+    	else
+    		this.Result.setText("Studente già iscritto al corso!");
     	
     }
 
@@ -174,6 +208,7 @@ public class FXMLController {
         assert nome != null : "fx:id=\"nome\" was not injected: check your FXML file 'Scene.fxml'.";
         assert cognome != null : "fx:id=\"cognome\" was not injected: check your FXML file 'Scene.fxml'.";
         assert Result != null : "fx:id=\"Result\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert btnIscrivi != null : "fx:id=\"btnIscrivi\" was not injected: check your FXML file 'Scene.fxml'.";
     }
     
     public void setModel(Model model) {

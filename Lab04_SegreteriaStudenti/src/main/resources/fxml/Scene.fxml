@@ -129,6 +129,14 @@
                   </Button>
                </children>
             </GridPane>
+            <Button fx:id="btnIscrivi" alignment="CENTER" mnemonicParsing="false" onAction="#handleIscrivi" text="Iscrivi">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="515.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
             <TextArea fx:id="Result">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="10.0" />

@@ -47,5 +47,17 @@ public class Model {
 		Corso c = new Corso(codice,null,null,null);
 		return dao.cercaIscrizione(s, c);
 	}
+	
+	public boolean inscriviStudenteACorso(int matricola, String codice) {
+		
+		// Controllo che lo studente non sia già iscritto
+		if(this.cercaIscrizione(matricola, codice)==true)
+			return false;
+		
+		Studente s = new Studente(matricola,null,null,null);
+		Corso c = new Corso(codice,null,null,null);
+		
+		return dao.inscriviStudenteACorso(s, c);
+	}
 
 }
