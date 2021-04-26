@@ -78,8 +78,6 @@ public class FXMLController {
     		this.Result.setText("Lo studente è già iscritto al corso!");
     	else
     		this.Result.setText("Lo studente non è iscritto al corso!");
-    	
-    	
     }
     
     @FXML

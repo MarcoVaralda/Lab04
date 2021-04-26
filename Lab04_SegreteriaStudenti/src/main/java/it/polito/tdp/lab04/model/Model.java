@@ -59,5 +59,4 @@ public class Model {
 		
 		return dao.inscriviStudenteACorso(s, c);
 	}
-
 }
